@@ -12,19 +12,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       
-      - name: 
+      - name: CFML Build Tools
         id: cfml_build_tools
         uses: ./ # Uses an action in the root directory
         with:
           cfcompile-args: 'sourcePath=${{ github.workspace }}/tests destPath=${{ github.workspace }}/tests/compiled cfengine=lucee@5.3.7.47'
 
-      - name: check result
+      - name: Check Result
         run: |
           ls -al
-          cd tests
-          ls -al
-          cd compiled
-          ls -al
+          (test -d ${{ github.workspace }}/tests/compiled) || (echo "Missing compiled dir" && exit 1)
 
       - name: Get the output time
         run: echo "The time was ${{ steps.cfml_build_tools.outputs.time }}"

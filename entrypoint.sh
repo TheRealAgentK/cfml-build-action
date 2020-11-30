@@ -7,5 +7,4 @@ ls -al
 which box
 echo "box version: $(box version)"
 echo "$1"
-box cfcompile $1 > cfcompile.txt
-
+box cfcompile $1 
