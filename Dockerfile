@@ -6,8 +6,10 @@ RUN ["box", "install", "cfml-compiler"]
 RUN ["box", "install", "commandbox-codechecker"]
 RUN ["box", "install", "commandbox-cflint"]
 
+
 # Copies CB modules into filesyste,
-COPY --from=build /root/.CommandBox/cfml/modules /root/.CommandBox/cfml/modules 
+FROM foundeo/minibox:latest
+COPY /root/.CommandBox/cfml/modules /root/.CommandBox/cfml/modules 
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
