@@ -1,0 +1,13 @@
+# action.yml
+name: 'cfml build tools'
+inputs:
+  cfcompile-args:
+    required: false
+outputs:
+  time: # id of output
+    description: 'The time this ran'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.cfcompile-args }}

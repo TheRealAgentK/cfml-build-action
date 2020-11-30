@@ -1,0 +1,27 @@
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  hello_world_job_private:
+    runs-on: ubuntu-latest
+    name: test task private run
+    
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: 
+        id: cfml_build_tools
+        uses: ./ # Uses an action in the root directory
+        with:
+          cfcompile-args: 'nothing'
+
+      - name: check result
+        run: |
+          ls -al
+
+      - name: Get the output time
+        run: echo "The time was ${{ steps.cfml_build_tools.outputs.time }}"
+
