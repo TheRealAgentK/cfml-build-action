@@ -16,7 +16,7 @@ jobs:
         id: cfml_build_tools
         uses: ./ # Uses an action in the root directory
         with:
-          cfcompile-args: 'sourcePath=./tests destPath=./tests/compiled cfengine=lucee@5.3.7.47'
+          cfcompile-args: 'sourcePath=./tests/ destPath=./tests/compiled/ cfengine=lucee@5.3.7.47'
 
       - name: Check Result
         run: |
