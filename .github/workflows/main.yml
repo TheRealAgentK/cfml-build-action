@@ -21,9 +21,11 @@ jobs:
       - name: Check Result
         run: |
           ls -al
-          cd tests/compiled
+          cd tests
           ls -al
-          (test -d ${{ github.workspace }}/tests/compiled) || (echo "Missing compiled dir" && exit 1)
+          cd compiled
+          ls -al
+          (test -d ./tests/compiled) || (echo "Missing compiled dir" && exit 1)
 
       - name: Get the output time
         run: echo "The time was ${{ steps.cfml_build_tools.outputs.time }}"
