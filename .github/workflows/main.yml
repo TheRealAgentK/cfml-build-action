@@ -16,10 +16,14 @@ jobs:
         id: cfml_build_tools
         uses: ./ # Uses an action in the root directory
         with:
-          cfcompile-args: 'nothing'
+          cfcompile-args: 'sourcePath=${{ github.workspace }}/tests destPath=${{ github.workspace }}/tests/compiled cfengine=lucee@5.3.7.47'
 
       - name: check result
         run: |
+          ls -al
+          cd tests
+          ls -al
+          cd compiled
           ls -al
 
       - name: Get the output time
