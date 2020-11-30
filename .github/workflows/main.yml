@@ -14,7 +14,7 @@ jobs:
       
       - name: CFML Build Tools
         id: cfml_build_tools
-        uses: therealagent/cfml-build-action@latest
+        uses: therealagentk/cfml-build-action@latest
         with:
           cfcompile-args: 'sourcePath=./tests/ destPath=./tests/compiled cfengine=lucee@5.3.7.47'
 
