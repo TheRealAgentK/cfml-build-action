@@ -5,7 +5,7 @@ on:
 jobs:
   hello_world_job_public:
     runs-on: ubuntu-latest
-    name: test task public run
+    name: 1 test task public run
     
     steps:
 
@@ -32,7 +32,7 @@ jobs:
 
   hello_world_job_private:
     runs-on: ubuntu-latest
-    name: test task private run
+    name: 2 test task private run
     
     steps:
 
