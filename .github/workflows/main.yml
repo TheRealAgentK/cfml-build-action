@@ -3,6 +3,33 @@ on:
     branches: [ main ]
 
 jobs:
+  hello_world_job_public:
+    runs-on: ubuntu-latest
+    name: test task private run
+    
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: CFML Build Tools
+        id: cfml_build_tools
+        uses: therealagent/cfml-build-action@latest
+        with:
+          cfcompile-args: 'sourcePath=./tests/ destPath=./tests/compiled cfengine=lucee@5.3.7.47'
+
+      - name: Check Result
+        run: |
+          ls -al
+          cd tests
+          ls -al
+          cd compiled
+          ls -al
+          (test -d ${{ github.workspace }}/tests/compiled && test -f ${{ github.workspace }}/tests/compileda.cfm) || (echo "Missing compiled dir or compiled test file" && exit 1)
+
+      - name: Get the output time
+        run: echo "The time was ${{ steps.cfml_build_tools.outputs.time }}"
+
   hello_world_job_private:
     runs-on: ubuntu-latest
     name: test task private run
