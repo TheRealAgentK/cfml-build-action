@@ -16,7 +16,7 @@ jobs:
         id: cfml_build_tools
         uses: ./ # Uses an action in the root directory
         with:
-          cfcompile-args: 'sourcePath=./tests/ destPath=./tests/compiled/ cfengine=lucee@5.3.7.47'
+          cfcompile-args: 'sourcePath=./tests/ --overwrite cfengine=lucee@5.3.7.47'
 
       - name: Check Result
         run: |
@@ -25,7 +25,7 @@ jobs:
           ls -al
           cd compiled
           ls -al
-          (test -d ./tests/compiled) || (echo "Missing compiled dir" && exit 1)
+          (test -d ${{ github.workspace }}/tests/compiled && test -f ${{ github.workspace }}/tests/compileda.cfm) || (echo "Missing compiled dir or compiled test file" && exit 1)
 
       - name: Get the output time
         run: echo "The time was ${{ steps.cfml_build_tools.outputs.time }}"
