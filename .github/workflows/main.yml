@@ -14,10 +14,11 @@ jobs:
       
       - name: CFML Build Tools
         id: cfml_build_tools
-        uses: therealagentk/cfml-build-action@1.3
+        uses: therealagentk/cfml-build-action@1.4
         with:
           cfcompile-args: 'sourcePath=./tests/ destPath=./tests/compiled cfengine=lucee@5.3.7.47'
           fixinator-args: 'path="tests/**.cf*" confidence="low" severity="low" failOnIssues="false" resultFormat="html" resultFile="fixinatorResultPublic.html"'
+          fixinator-key: ${{ secrets.FIXINATOR_API_KEY }}
 
       - name: Check Result
         run: |
@@ -46,6 +47,7 @@ jobs:
         with:
           cfcompile-args: 'sourcePath=./tests/ destPath=./tests/compiled cfengine=lucee@5.3.7.47'
           fixinator-args: 'path="tests/**.cf*" confidence="low" severity="low" failOnIssues="false" resultFormat="html" resultFile="fixinatorResultPrivate.html"'
+          fixinator-key: ${{ secrets.FIXINATOR_API_KEY }}
 
       - name: Check Result
         run: |

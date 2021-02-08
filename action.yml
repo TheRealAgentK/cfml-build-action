@@ -5,6 +5,8 @@ inputs:
     required: true  
   fixinator-args:
     required: true
+  fixinator-key:
+    required: true
 outputs:
   time: # id of output
     description: 'The time this ran'
@@ -14,3 +16,5 @@ runs:
   args:
     - ${{ inputs.cfcompile-args }}
     - ${{ inputs.fixinator-args }}
+    - ${{ inputs.fixinator-key }}
+

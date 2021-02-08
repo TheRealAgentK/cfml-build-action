@@ -9,4 +9,5 @@ echo "box version: $(box version)"
 echo "$1"
 echo "$2"
 box cfcompile $1 
+box config set modules.fixinator.api_key=$3
 box fixinator $2
