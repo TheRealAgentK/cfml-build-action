@@ -3,6 +3,7 @@ FROM ortussolutions/commandbox:latest as build
 
 # Install tools in Commandbox
 RUN ["box", "install", "fixinator"]
+RUN ["box", "config", "set", "modules.fixinator.api_key=${{ secrets.FIXINATOR_API_KEY }}"]
 RUN ["box", "install", "cfml-compiler"]
 RUN ["box", "install", "commandbox-codechecker"]
 RUN ["box", "install", "commandbox-cflint"]
