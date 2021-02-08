@@ -2,7 +2,9 @@
 name: 'cfml build tools'
 inputs:
   cfcompile-args:
-    required: false
+    required: true  
+  fixinator-args:
+    required: true
 outputs:
   time: # id of output
     description: 'The time this ran'
