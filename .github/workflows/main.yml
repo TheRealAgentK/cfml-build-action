@@ -14,9 +14,10 @@ jobs:
       
       - name: CFML Build Tools
         id: cfml_build_tools
-        uses: therealagentk/cfml-build-action@1.1
+        uses: therealagentk/cfml-build-action@1.2
         with:
           cfcompile-args: 'sourcePath=./tests/ destPath=./tests/compiled cfengine=lucee@5.3.7.47'
+          fixinator-args: 'path="webroot/config/**.cf*,webroot/interceptors/**.cf*,webroot/models/**.cf*,webroot/modules_app/**.cfm*,webroot/tests/specs/**.cf*,webroot/Application.cfc" confidence="low" severity="low" failOnIssues="false" resultFormat="html" resultFile="fixinatorResult.html"'
 
       - name: Check Result
         run: |
@@ -44,6 +45,7 @@ jobs:
         uses: ./ # Uses an action in the root directory
         with:
           cfcompile-args: 'sourcePath=./tests/ destPath=./tests/compiled cfengine=lucee@5.3.7.47'
+          fixinator-args: 'path="webroot/config/**.cf*,webroot/interceptors/**.cf*,webroot/models/**.cf*,webroot/modules_app/**.cfm*,webroot/tests/specs/**.cf*,webroot/Application.cfc" confidence="low" severity="low" failOnIssues="false" resultFormat="html" resultFile="fixinatorResult.html"'
 
       - name: Check Result
         run: |

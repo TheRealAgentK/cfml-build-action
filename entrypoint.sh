@@ -7,4 +7,6 @@ ls -al
 which box
 echo "box version: $(box version)"
 echo "$1"
+echo "$2"
 box cfcompile $1 
+box fixinator $2
